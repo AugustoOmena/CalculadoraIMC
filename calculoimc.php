@@ -8,7 +8,6 @@ function classificarIMC($imc) {
         array('Limite Inferior' => 35.0, 'Limite Superior' => 39.9, 'Classificacao' => 'Obesidade Grau II'),
         array('Limite Inferior' => 40.0, 'Limite Superior' => PHP_FLOAT_MAX, 'Classificacao' => 'Obesidade Grau III')
     );
-
     foreach ($classificacoes as $faixa) {
         if ($imc >= $faixa['Limite Inferior'] && $imc <= $faixa['Limite Superior']) {
             $classificacao = $faixa['Classificacao'];
@@ -16,19 +15,15 @@ function classificarIMC($imc) {
             return;
         }
     }
-
     echo "Faixa de IMC não encontrada para o valor $imc";
 }
-
 if (isset($_POST['imc'])) {
     $valorIMC = floatval($_POST['imc']);
     classificarIMC($valorIMC);
 } else {
     echo "Informe um valor de IMC.";
 }
-
 ?>
-
 <form method="post" action="">
     <label for="imc">Informe o valor do IMC:</label>
     <input type="text" name="imc" id="imc" required>
